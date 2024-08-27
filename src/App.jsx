@@ -1,4 +1,5 @@
-import Bulb from "./Components/bulbOnOff/Bulb"
+
+import CardsCategory from "./Components/CardsCategory/CardsCategory"
 
 
 
@@ -7,7 +8,8 @@ function App() {
 
   return (
     <>
-     <Bulb/>
+    
+     <CardsCategory/>
     </>
   )
 }

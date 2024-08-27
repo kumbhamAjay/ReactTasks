@@ -67,7 +67,7 @@ class CardsCategory extends Component {
             return (
               <div key={each.id} style={{ height: "800px" }}>
                 <CustomCard
-                  title={each.title}
+                  title={each.tit}
                   text={each.description}
                   price={each.price}
                   image={each.image}

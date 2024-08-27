@@ -1,4 +1,4 @@
-
+import PropTypes  from 'react-bootstrap/esm/Image';
 import Card from 'react-bootstrap/Card';
 
 function CustomCard({title,text,image,price}) {
@@ -16,5 +16,11 @@ function CustomCard({title,text,image,price}) {
     </Card>
   );
 }
+CustomCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  };
 
 export default CustomCard;

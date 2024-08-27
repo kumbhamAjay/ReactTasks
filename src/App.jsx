@@ -1,4 +1,5 @@
-import FoodRecipe from "./Components/FoodRecipe/FoodRecipe"
+import Bulb from "./Components/bulbOnOff/Bulb"
+
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-     <FoodRecipe/>
+     <Bulb/>
     </>
   )
 }

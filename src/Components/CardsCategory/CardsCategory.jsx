@@ -2,7 +2,7 @@ import axios from "axios";
 import { Component } from "react";
 import CustomCard from "./CustomCard";
 
-// import CustomNav from "./Nav";
+
 
 class CardsCategory extends Component {
   state = {
@@ -11,10 +11,9 @@ class CardsCategory extends Component {
     currentCategory: []
   };
   componentDidMount() {
-    // console.log("i am executed")
-    //I can call server to fetch data
+    
     this.fetchdata();
-    // this.fetchCategories()
+    
   }
   fetchdata = async () => {
     const { status, data } = await axios.get(
@@ -23,26 +22,25 @@ class CardsCategory extends Component {
     const categoryList = await axios.get(
       "https://fakestoreapi.com/products/categories"
     );
-    // console.log(categoryList)
-    // console.log(data)
+  
     if (status === 200) {
       this.setState({
         products: data,
         categories: categoryList.data,
       });
     }
-    // console.log(this.categories)
+    
   };
   filter = async (x) => {
-    // console.log(x)
+
     
     const filteredData = await axios.get(
       `https://fakestoreapi.com/products/category/${x}`
     );
-    // console.log(filteredData)
+   
     
     this.setState({ products: filteredData.data});
-    // console.log(this.currentCategory)
+  
 
     
    

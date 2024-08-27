@@ -56,7 +56,7 @@ class Bulb extends Component {
       <>
         <button onClick={this.addBulb}>Add Bulb</button>
         <p>Number of Bulbs {this.state.bulb.length}</p>
-        <div style={{ display: "flex", gap: "20px" ,flexWrap:"wrap",border:"1px solid black"}}>
+        <div style={{ display: "flex", gap: "20px" ,flexWrap:"wrap"}}>
           {this.state.bulb.map((each,ind) => {
             return(
             <Card key={ind} style={{ width: "250px", height: "300px"}}>

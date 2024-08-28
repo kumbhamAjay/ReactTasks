@@ -1,6 +1,7 @@
 
 
-import CustomTodo from "./Components/hooks/useState/todo"
+import CardsEvenOdd from "./Components/hooks/useState/CardsEvenOdd"
+
 
 
 
@@ -12,7 +13,7 @@ function App() {
     
      
       
-      <CustomTodo/>
+      <CardsEvenOdd/>
     </>
   )
 }

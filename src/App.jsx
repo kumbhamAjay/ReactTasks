@@ -1,5 +1,6 @@
 
-import CardsCategory from "./Components/CardsCategory/CardsCategory"
+
+import CustomTodo from "./Components/hooks/useState/todo"
 
 
 
@@ -9,7 +10,9 @@ function App() {
   return (
     <>
     
-     <CardsCategory/>
+     
+      
+      <CustomTodo/>
     </>
   )
 }

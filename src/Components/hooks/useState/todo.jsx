@@ -33,7 +33,7 @@ const CustomTodo=()=>{
         const updateItems=todos.map((eachTodo)=>{
             
             if(eachTodo.id==ind){
-                eachTodo.text="updated"
+                eachTodo.text=` Item ${ind}updated`
             }
             return eachTodo
         })

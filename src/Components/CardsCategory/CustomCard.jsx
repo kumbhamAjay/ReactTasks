@@ -1,9 +1,10 @@
 
 import Card from 'react-bootstrap/Card';
 
-function CustomCard({title,text,image,price}) {
+function CustomCard(props) {
+  const {text,image,price,title}=props
   return (
-    <Card style={{ width: '18rem',height:"100%" }}>
+    <Card style={{ width: '18rem',height:"100%",overflow:"hidden"}}>
       <Card.Img variant="top" src={image} style={{height:"30%",width:"80%",margin:"10%"}}/>
       <Card.Body>
         <Card.Title>{title}</Card.Title>

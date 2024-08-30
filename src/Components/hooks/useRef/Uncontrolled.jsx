@@ -75,7 +75,7 @@ const UncontrolledComponent = () => {
         // console.log(response);
       }
     } catch (err) {
-      console.log(err);
+      alert("Error 400 Not found");
     }
   };
   const deleteHandle = (o) => {

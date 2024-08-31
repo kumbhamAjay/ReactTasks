@@ -26,15 +26,27 @@ function CountryStates() {
   };
   return (
     <>
-      <div style={{padding:"20px",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:'center',background:"#d9b3ff",width:'500px'}}>
-        <form action="" onSubmit={submitHandler} style={{padding:"20px"}}>
-          <label >Select Country:</label>
+      <div
+        style={{
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#d9b3ff",
+          width: "500px",
+          left:"0",
+          right:"0",
+          margin:"auto"
+        }}
+      >
+        <form action="" onSubmit={submitHandler} style={{ padding: "20px" }}>
+          <label>Select Country:</label>
           <select
             name="Country"
             id=""
             value={countrySelected}
             onChange={changeCountryHandler}
-            
           >
             <option hidden>Countries</option>
             {Object.keys(countries).map((each, i) => {
@@ -45,10 +57,11 @@ function CountryStates() {
               );
             })}
           </select>
-          <br /><br />
+          <br />
+          <br />
 
           <>
-            <label>Select State  :</label>
+            <label>Select State :</label>
 
             <select name="" id="" onChange={changeStateHandler}>
               <option hidden>States</option>
@@ -62,12 +75,12 @@ function CountryStates() {
                 })}
             </select>
           </>
-          <br /><br />
+          <br />
+          <br />
           <button type="submit">Submit</button>
         </form>
         {tableData.length > 0 && <CustomTable tableData={tableData} />}
       </div>
-      
     </>
   );
 }

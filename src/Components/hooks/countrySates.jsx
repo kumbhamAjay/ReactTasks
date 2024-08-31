@@ -17,12 +17,19 @@ function CountryStates() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    setTableData([
-      ...tableData,
-      { Country: countrySelected, State: stateSelected },
-    ]);
-    setCountrySelected("");
-    setStateSelected("");
+    if(countrySelected!=""&&stateSelected!=""){
+        setTableData([
+            ...tableData,
+            { Country: countrySelected, State: stateSelected },
+          ]);
+          setCountrySelected("");
+          setStateSelected("");
+
+    }
+    else{
+        alert("Nothing is Selected")
+    }
+    
   };
   return (
     <>
@@ -47,6 +54,7 @@ function CountryStates() {
             id=""
             value={countrySelected}
             onChange={changeCountryHandler}
+            required
           >
             <option hidden>Countries</option>
             {Object.keys(countries).map((each, i) => {
@@ -63,7 +71,7 @@ function CountryStates() {
           <>
             <label>Select State :</label>
 
-            <select name="" id="" onChange={changeStateHandler}>
+            <select name="" id="" onChange={changeStateHandler} required>
               <option hidden>States</option>
               {countrySelected &&
                 countries[countrySelected].map((each, i) => {

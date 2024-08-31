@@ -5,12 +5,15 @@ import CustomTable from "../../Table/CustomTable";
 const ControlledForm = () => {
   const [mobile, setMobile] = useState("");
   const [model, setModel] = useState("");
-  const [issues, setIssues] = useState([]);
+  const [issues, setIssues] = useState({
+  });
   const [list, setList] = useState([]);
+  let issueKeys=Object.keys(issues)
   const initialFormData={
     modelData:"",
     mobileNumber:"",
-    issue:""
+    issue:{Functionality:false,Display:false,Battery:false
+    }
 }
 
   const mobileChange = (e) => {
@@ -22,9 +25,9 @@ const ControlledForm = () => {
   };
   const issuesHandle = async(e) => {
     const { value, checked } = e.target;
-    console.log(value, checked);
+    // console.log(value, checked);
     
-      await setIssues([...issues, value]);
+      setIssues({...issues,[value]:checked});
     // console.log(issues,"check")
 
     // console.log(issues)
@@ -37,8 +40,9 @@ const ControlledForm = () => {
       );
       // console.log(response);
       if (response.status == 201) {
-        setIssues([]);
+        setIssues(initialFormData.issue);
       } // Log the response data
+      // console.log("data posted")
     } catch (error) {
       console.error("There was an error making the request:", error);
     }
@@ -46,24 +50,35 @@ const ControlledForm = () => {
   const getData = async () => {
     try {
       const result = await axios.get("http://localhost:5000/complaints");
-    //   console.log(result);
+      // console.log(result.data);
       // Log the response data
       if (result.status == 200) {
         setList([...result.data]);
       }
+      // console.log("got data")
     } catch (error) {
       console.error("There was an error making the request:", error);
     }
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    let d = { mobile: mobile, model: model, Issues: issues };
+    let issuesClicked=""
+    // console.log(issueKeys)
+    issueKeys.forEach((e)=>{
+      console.log(e,issues[e])
+        if(issues[e]==true){
+          issuesClicked+=e+" "
+        }
+    })
+    // console.log(issuesClicked,"-------------")
+    let d = { mobile: mobile, model: model, Issues: issuesClicked};
+    console.log(d)
     await postData(d);
     await getData();
     setMobile(initialFormData.mobileNumber)
     setModel(initialFormData.modelData)
     setIssues(initialFormData.issue)
-    e.target.reset()
+    // e.target.reset()
     
   };
   const dele= async () => {
@@ -103,13 +118,14 @@ const ControlledForm = () => {
           type="checkbox"
           value={"Functionality"}
           onChange={issuesHandle}
+          checked={issues.Functionality}
         />
         <label htmlFor="">Functionality Issue</label>
         <br />
-        <input type="checkbox" value={"Display"} onChange={issuesHandle} />
+        <input type="checkbox" value={"Display"} onChange={issuesHandle} checked={issues.Display} />
         <label htmlFor="">Dispaly</label>
         <br />
-        <input type="checkbox" value={"Battery"} onChange={issuesHandle} />
+        <input type="checkbox" value={"Battery"} onChange={issuesHandle} checked={issues.Battery} />
         <label htmlFor="">Battery Issue</label>
         <br />
         <button type="submit">Submit</button>

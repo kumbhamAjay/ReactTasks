@@ -1,20 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
 import CustomTable from "../../Table/CustomTable";
+import './'
 
 const ControlledForm = () => {
   const [mobile, setMobile] = useState("");
   const [model, setModel] = useState("");
-  const [issues, setIssues] = useState({
-  });
+  const [phone, setPhone] = useState("");
+  const [issues, setIssues] = useState({});
   const [list, setList] = useState([]);
-  let issueKeys=Object.keys(issues)
-  const initialFormData={
-    modelData:"",
-    mobileNumber:"",
-    issue:{Functionality:false,Display:false,Battery:false
-    }
-}
+  let date = new Date();
+
+  let issueKeys = Object.keys(issues);
+  const initialFormData = {
+    modelData: "",
+    mobileNumber: "",
+    issue: { Functionality: false, Display: false, Battery: false },
+  };
 
   const mobileChange = (e) => {
     setMobile(e.target.value);
@@ -23,11 +25,14 @@ const ControlledForm = () => {
   const modelChange = (e) => {
     setModel(e.target.value);
   };
-  const issuesHandle = async(e) => {
+  const phoneChange = (e) => {
+    setPhone(e.target.value);
+  };
+  const issuesHandle = async (e) => {
     const { value, checked } = e.target;
     // console.log(value, checked);
-    
-      setIssues({...issues,[value]:checked});
+
+    setIssues({ ...issues, [value]: checked });
     // console.log(issues,"check")
 
     // console.log(issues)
@@ -62,55 +67,63 @@ const ControlledForm = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    let issuesClicked=""
+    let issuesClicked = "";
     // console.log(issueKeys)
-    issueKeys.forEach((e)=>{
-      console.log(e,issues[e])
-        if(issues[e]==true){
-          issuesClicked+=e+" "
-        }
-    })
+    issueKeys.forEach((e) => {
+      // console.log(e, issues[e]);
+      if (issues[e] == true) {
+        issuesClicked += e + " ";
+      }
+    });
     // console.log(issuesClicked,"-------------")
-    let d = { mobile: mobile, model: model, Issues: issuesClicked};
-    console.log(d)
+    let d = {
+      Mobile: mobile,
+      Model: model,
+      Phone: phone,
+      Issues: issuesClicked,
+      ComplaintRegisteredDateAndTimeTime: `Date:${date.getFullYear()}-${
+        date.getMonth() + 1
+      }-${date.getDate()}, Time: ${date.toLocaleTimeString()} `,
+    };
+    // console.log(d);
     await postData(d);
     await getData();
-    setMobile(initialFormData.mobileNumber)
-    setModel(initialFormData.modelData)
-    setIssues(initialFormData.issue)
+    setMobile(initialFormData.mobileNumber);
+    setModel(initialFormData.modelData);
+    setIssues(initialFormData.issue);
     // e.target.reset()
-    
   };
-  const dele= async () => {
-    
+  const dele = async () => {
     try {
-        const response = await axios.get('http://localhost:5000/complaints');
-        const complaints = response.data;
-        
-        // Iterate through each complaint and delete it
-        for (let complaint of complaints) {
-            await axios.delete(`http://localhost:5000/complaints/${complaint.id}`);
-        }
-        setList([])
-        
-        console.log('All complaints deleted successfully');
+      const response = await axios.get("http://localhost:5000/complaints");
+      const complaints = response.data;
+
+      // Iterate through each complaint and delete it
+      for (let complaint of complaints) {
+        await axios.delete(`http://localhost:5000/complaints/${complaint.id}`);
+      }
+      setList([]);
+
+      // console.log("All complaints deleted successfully");
     } catch (error) {
-        console.error('Error deleting complaints:', error);
+      console.error("Error deleting complaints:", error);
     }
-    
-};
-  const deleteData=()=>{
-    dele()
-  }
+  };
+  const deleteData = () => {
+    dele();
+  };
   return (
-    <>
+    <div className="main">
       <h1>Mobile Complaint Form</h1>
       <form onSubmit={submitHandler}>
-        <label htmlFor="mobile">Mobile:</label>
-        <input type="text" value={mobile} onChange={mobileChange} />
+        <label htmlFor="mobile">Mobile Name:</label>
+        <input type="text" value={mobile} onChange={mobileChange} required />
         <br />
         <label htmlFor="model">Model :</label>
-        <input type="text" value={model} onChange={modelChange} />
+        <input type="text" value={model} onChange={modelChange} required />
+        <br />
+        <label htmlFor="model">Phone No :</label>
+        <input type="number" value={phone} onChange={phoneChange} required />
         <br />
         <label htmlFor="">Issues</label>
         <br />
@@ -122,10 +135,20 @@ const ControlledForm = () => {
         />
         <label htmlFor="">Functionality Issue</label>
         <br />
-        <input type="checkbox" value={"Display"} onChange={issuesHandle} checked={issues.Display} />
+        <input
+          type="checkbox"
+          value={"Display"}
+          onChange={issuesHandle}
+          checked={issues.Display}
+        />
         <label htmlFor="">Dispaly</label>
         <br />
-        <input type="checkbox" value={"Battery"} onChange={issuesHandle} checked={issues.Battery} />
+        <input
+          type="checkbox"
+          value={"Battery"}
+          onChange={issuesHandle}
+          checked={issues.Battery}
+        />
         <label htmlFor="">Battery Issue</label>
         <br />
         <button type="submit">Submit</button>
@@ -133,41 +156,10 @@ const ControlledForm = () => {
       <div>
         <button onClick={deleteData}>Delete Data</button>
         <h1>Complaints List</h1>
-        {
-          list.length>0&&<CustomTable tableData={list}/>
-        }
-          {/* <table>
-        
-          <tr>
-            <td>
-              <strong>Mobile Name</strong>
-            </td>
-            <td>
-              <strong>Model</strong>
-            </td>
-            <td>
-              <strong>Issues</strong>
-            </td>
-          </tr>
-          {list.map((each, ind) => {
-            return (
-              <tr key={ind}>
-                <td>{each.mobile}</td>
-                <td>{each.model}</td>
-                <td>{each.Issues.map((k,i)=>{
-                    return(
-                        <li key={i}>
-                            {k}
-
-                        </li>
-                    )
-                })}</td>
-              </tr>
-            );
-          })}
-        </table> */}
+        {list.length > 0 && <CustomTable tableData={list} />}
+       
       </div>
-    </>
+    </div>
   );
 };
 export default ControlledForm;

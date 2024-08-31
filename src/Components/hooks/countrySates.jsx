@@ -27,7 +27,7 @@ function CountryStates() {
 
     }
     else{
-        alert("Nothing is Selected")
+        alert("Select all fields")
     }
     
   };

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import CustomTable from "../../Table/CustomTable";
-import './'
+
 
 const ControlledForm = () => {
   const [mobile, setMobile] = useState("");

@@ -1,7 +1,7 @@
+
 import axios from "axios";
 import { useState } from "react";
 import CustomTable from "../../Table/CustomTable";
-
 
 const ControlledForm = () => {
   const [mobile, setMobile] = useState("");
@@ -81,7 +81,7 @@ const ControlledForm = () => {
       Model: model,
       Phone: phone,
       Issues: issuesClicked,
-      ComplaintRegisteredDateAndTimeTime: `Date:${date.getFullYear()}-${
+      'Complaint Registered Date And Time': `Date:${date.getFullYear()}-${
         date.getMonth() + 1
       }-${date.getDate()}, Time: ${date.toLocaleTimeString()} `,
     };
@@ -113,9 +113,9 @@ const ControlledForm = () => {
     dele();
   };
   return (
-    <div className="main">
-      <h1>Mobile Complaint Form</h1>
-      <form onSubmit={submitHandler}>
+    <div className="main" style={{width:"600px",left:"0",right:"0",margin:"auto"}}>
+      <h1 style={{textAlign:"center"}}>Mobile Complaint Form</h1>
+      <form onSubmit={submitHandler} style={{width:"600px",backgroundColor:'aqua',borderRadius:"20px",left:"0",right:"0",margin:"auto",padding:"20px"}}>
         <label htmlFor="mobile">Mobile Name:</label>
         <input type="text" value={mobile} onChange={mobileChange} required />
         <br />
@@ -123,7 +123,7 @@ const ControlledForm = () => {
         <input type="text" value={model} onChange={modelChange} required />
         <br />
         <label htmlFor="model">Phone No :</label>
-        <input type="number" value={phone} onChange={phoneChange} required />
+        <input type="te" value={phone} onChange={phoneChange} required />
         <br />
         <label htmlFor="">Issues</label>
         <br />
@@ -154,8 +154,9 @@ const ControlledForm = () => {
         <button type="submit">Submit</button>
       </form>
       <div>
-        <button onClick={deleteData}>Delete Data</button>
+        
         <h1>Complaints List</h1>
+        <button onClick={deleteData}>Delete Data</button>
         {list.length > 0 && <CustomTable tableData={list} />}
        
       </div>

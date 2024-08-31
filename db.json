@@ -1,16 +1,3 @@
 {
-  "complaints": [
-    {
-      "id": "b913",
-      "mobile": "",
-      "model": "",
-      "Issues": ""
-    },
-    {
-      "id": "6e46",
-      "mobile": "",
-      "model": "",
-      "Issues": ""
-    }
-  ]
+  "complaints": []
 }

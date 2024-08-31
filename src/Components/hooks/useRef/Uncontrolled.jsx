@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 
-import "./uncontrolled.css";
+import "./uncontrolled.module.css";
 
 const UncontrolledComponent = () => {
   const usernameRef = useRef("");

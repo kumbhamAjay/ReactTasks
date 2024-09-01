@@ -1,7 +1,7 @@
 
 
-import CountryStates from "./Components/hooks/countrySates"
-import ControlledForm from "./Components/hooks/useRef/controlledForm"
+
+import WeatherApp from "./Components/WeatherApp/WeatherApp"
 
 
 
@@ -13,8 +13,7 @@ function App() {
   return (
     <>
     
-  
-    <ControlledForm/>
+    <WeatherApp/>
   
     </>
   )

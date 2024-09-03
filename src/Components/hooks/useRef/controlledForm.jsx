@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 import CustomTable from "../../Table/CustomTable";
+import { Modal, Button } from "react-bootstrap";
 
 const ControlledForm = () => {
   const [mobile, setMobile] = useState("");
@@ -9,6 +10,9 @@ const ControlledForm = () => {
   const [phone, setPhone] = useState("");
   const [issues, setIssues] = useState({});
   const [list, setList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRow, setSelectedRow] = useState(null);
+
   let date = new Date();
 
   let issueKeys = Object.keys(issues);
@@ -86,12 +90,31 @@ const ControlledForm = () => {
       }-${date.getDate()}, Time: ${date.toLocaleTimeString()} `,
     };
     // console.log(d);
-    await postData(d);
+     if (selectedRow) {
+      // Update existing complaint
+      console.log(selectedRow.id)
+      await updateData(selectedRow.id, d);
+    } else {
+      // Create new complaint
+      await postData(d);
+    };
     await getData();
     setMobile(initialFormData.mobileNumber);
     setModel(initialFormData.modelData);
     setIssues(initialFormData.issue);
+    setSelectedRow(null)
+    setShowModal(false)
     // e.target.reset()
+  };
+  const updateData = async (id, updatedData) => {
+    try {
+      const response = await axios.patch(`http://localhost:5000/complaints/${id}`, updatedData);
+      if (response.status === 200) {
+        console.log("Data updated successfully");
+      }
+    } catch (error) {
+      console.error("There was an error updating the data:", error);
+    }
   };
   const dele = async () => {
     try {
@@ -112,6 +135,22 @@ const ControlledForm = () => {
   const deleteData = () => {
     dele();
   };
+  const dataFromChild=(rowData)=>{
+    // console.log(rowData)
+    
+
+    setSelectedRow(rowData);
+    setMobile(rowData.Mobile);
+    setModel(rowData.Model);
+    setPhone(rowData.Phone);
+    setIssues({
+      Functionality: rowData.Issues.includes("Functionality"),
+      Display: rowData.Issues.includes("Display"),
+      Battery: rowData.Issues.includes("Battery"),
+    });
+    setShowModal(true);
+  };
+  
   return (
     <div className="main" style={{width:"600px",left:"0",right:"0",margin:"auto"}}>
       <h1 style={{textAlign:"center"}}>Mobile Complaint Form</h1>
@@ -157,7 +196,37 @@ const ControlledForm = () => {
         
         <h1>Complaints List</h1>
         <button onClick={deleteData}>Delete Data</button>
-        {list.length > 0 && <CustomTable tableData={list} />}
+        {list.length > 0 && <CustomTable tableData={list} dataToParent={dataFromChild}/>}
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedRow ? "Edit Complaint" : "Add Complaint"}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={submitHandler}>
+            <label htmlFor="mobile">Mobile Name:</label>
+            <input type="text" value={mobile} onChange={mobileChange} required />
+            <br />
+            <label htmlFor="model">Model :</label>
+            <input type="text" value={model} onChange={modelChange} required />
+            <br />
+            <label htmlFor="model">Phone No :</label>
+            <input type="text" value={phone} onChange={phoneChange} required />
+            <br />
+            <label>Issues</label>
+            <br />
+            <input type="checkbox" value="Functionality" onChange={issuesHandle} checked={issues.Functionality} />
+            <label>Functionality Issue</label>
+            <br />
+            <input type="checkbox" value="Display" onChange={issuesHandle} checked={issues.Display} />
+            <label>Display Issue</label>
+            <br />
+            <input type="checkbox" value="Battery" onChange={issuesHandle} checked={issues.Battery} />
+            <label>Battery Issue</label>
+            <br />
+            <Button type="submit">Save Changes</Button>
+          </form>
+        </Modal.Body>
+      </Modal>
        
       </div>
     </div>

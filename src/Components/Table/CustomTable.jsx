@@ -1,6 +1,7 @@
 import Table from "react-bootstrap/Table";
+import { MdModeEdit } from "react-icons/md";
 
-export default function CustomTable({ tableData }) {
+export default function CustomTable({ tableData ,dataToParent}) {
   const key = Object.keys(tableData[0]);
   // console.log(key)
 
@@ -11,6 +12,19 @@ export default function CustomTable({ tableData }) {
     }
     return c;
   });
+  ////////Edit.....................////
+  const sendData=(data)=>{
+    const KV=Object.entries(data)
+    
+    for(let i=0;i<KV.length;i++){
+      KV[i][0]=key[i]
+    }
+
+    // console.log(KV)
+    dataToParent(Object.fromEntries(KV))
+  }
+  
+  //
   return (
     <Table striped bordered hover>
       <thead>
@@ -22,6 +36,7 @@ export default function CustomTable({ tableData }) {
               </td>
             );
           })}
+          <td>Edit</td>
         </tr>
       </thead>
       <tbody>
@@ -31,10 +46,15 @@ export default function CustomTable({ tableData }) {
               {Object.values(eachObj).map((each, index) => {
                 return <td key={index}>{each}</td>;
               })}
+              <td>
+              <MdModeEdit onClick={()=>sendData(eachObj)}/>
+            </td>
             </tr>
           );
         })}
+      
       </tbody>
+      
     </Table>
   );
 }

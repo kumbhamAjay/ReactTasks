@@ -1,6 +1,7 @@
 import axios from 'axios'
-import  { useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Context } from './StoreNavigate'
 
 const Electronics = () => {
     const[electronics,setElectronics]=useState([])
@@ -13,8 +14,14 @@ const Electronics = () => {
             setElectronics([...data])
         }
     }
+    const {handler,decHandler}=useContext(Context)
   return (
+    <>
+    <h1>Electronics</h1>
+    <button onClick={handler}>Increment Count</button>
+    <button onClick={decHandler}>Decrement Count</button>
     <div style={{display:"flex",flexWrap:"wrap",gap:"auto"}}>
+        
         {electronics.map((each)=>{
             return(
                 <div key={each.id} style={{width:"300px",height:"300px",border:"1px solid",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
@@ -28,6 +35,8 @@ const Electronics = () => {
         })}
       
     </div>
+    </>
+    
   )
 }
 

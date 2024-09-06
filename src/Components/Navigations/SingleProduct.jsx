@@ -3,8 +3,9 @@
 
 
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Context } from './StoreNavigate'
 
 function SingleProduct() {
     const dynamicPath=useParams()
@@ -22,10 +23,14 @@ function SingleProduct() {
             setProductData(response.data)
         }
     }
+    const {handler,decHandler}=useContext(Context)
+    
 
     
   return (
     <div>
+         <button onClick={handler}>Increment Count</button>
+         <button onClick={decHandler}>Decrement Count</button>
         <h3>Product data</h3>
         {
             Object.keys(productData).length >0 && <>

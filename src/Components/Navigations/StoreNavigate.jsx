@@ -6,17 +6,29 @@ import Electronics from "./Electronics"
 import Jewelery from "./Jewelery"
 import WomenClothing from "./WomenClothing"
 import MenClothing from "./MenClothing"
-import { useState } from "react"
+import { createContext, useContext, useState } from "react"
 import SingleProduct from "./SingleProduct"
+
+export const Context=createContext()
 
 
 const StoreNavigate = () => {
-    const[product,setProduct]=useState(false)
+  const [count,setCount]=useState(0)
+  const handler=()=>{
+    setCount(count+1)
+  }
+  const decHandler=()=>{
+    setCount(count-1)
+  }
+
+  
 
 
   return (
     <div>
-        <h1>Store</h1>
+      <Context.Provider value={{count,handler,decHandler}}>
+      <h1>Store</h1>
+      <h1>{count}</h1>
         {/* ["electronics","jewelery","men's clothing","women's clothing"] */}
         <button><Link to="/products">All products</Link></button>
         <button><Link to="/products/categories/electronics">electronics </Link></button>
@@ -33,6 +45,8 @@ const StoreNavigate = () => {
             <Route path="/products/categories/women's clothing" element={<WomenClothing/>}/>
             <Route path="products/:product" element={<SingleProduct/>}/>
         </Routes>
+      </Context.Provider>
+       
       
     </div>
   )

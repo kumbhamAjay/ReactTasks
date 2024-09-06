@@ -1,7 +1,9 @@
 
 
 // import CountryStates from "./Components/hooks/countrySates"
-import ControlledForm from "./Components/hooks/useRef/controlledForm"
+import { BrowserRouter } from "react-router-dom"
+// import ControlledForm from "./Components/hooks/useRef/controlledForm"
+import StoreNavigate from "./Components/Navigations/StoreNavigate"
 
 
 
@@ -14,7 +16,10 @@ function App() {
     <>
     
   
-    <ControlledForm/>
+    {/* <ControlledForm/> */}
+    <BrowserRouter>
+    <StoreNavigate/>
+    </BrowserRouter>
   
     </>
   )

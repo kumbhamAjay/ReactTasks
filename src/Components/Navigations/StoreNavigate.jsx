@@ -28,7 +28,7 @@ const StoreNavigate = () => {
     <div>
       <Context.Provider value={{count,handler,decHandler}}>
       <h1>Store</h1>
-      <h1>{count}</h1>
+      <h1>Global Counter{count}</h1>
         {/* ["electronics","jewelery","men's clothing","women's clothing"] */}
         <button><Link to="/products">All products</Link></button>
         <button><Link to="/products/categories/electronics">electronics </Link></button>

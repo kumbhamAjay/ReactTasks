@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom"
+// import { NavLink } from "react-router-dom"
 // import "./navbar.css"
 
 
@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom"
 const NavBar=()=>{
 
     // const linkStyle={textDecoration:"none",color:"blue"}
-    const liStyle={margin:"10px"}
+    // const liStyle={margin:"10px"}
     return(
         <nav className="navbar navbar-expand-sm bg-light navbar-light">
         <div className="container-fluid">

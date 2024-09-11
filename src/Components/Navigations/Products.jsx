@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Context } from './StoreNavigate'
 
@@ -24,7 +24,8 @@ const Products = () => {
      <button onClick={handler}>Increment Count</button>
     <button onClick={decHandler}>Decrement Count</button>
     <div style={{display:"flex",flexWrap:"wrap",gap:"auto"}}>
-        {products.map((each)=>{
+        {
+        products.map((each)=>{
             return(
                 <div key={each.id} style={{width:"300px",height:"300px",border:"1px solid",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
                     <h4>{each.title}</h4>

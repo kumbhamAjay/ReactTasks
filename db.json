@@ -1,28 +1,12 @@
 {
   "complaints": [
     {
-      "id": "4ceb",
-      "Mobile": "vijay",
-      "Model": "1111111111111111111111",
-      "Phone": "957346704",
-      "Issues": "",
-      "Complaint Registered Date And Time": "Date:2024-9-3, Time: 1:18:17 pm "
-    },
-    {
-      "id": "a46e",
-      "Mobile": "redmi",
-      "Model": "redmi",
-      "Phone": "957346704",
-      "Issues": "Functionality Display Battery ",
-      "Complaint Registered Date And Time": "Date:2024-9-3, Time: 1:15:47 pm "
-    },
-    {
-      "id": "8c18",
-      "Mobile": "qqqqqqqqqqqqqqqqqqqqqq",
-      "Model": "1111111111111111111111",
-      "Phone": "957346704",
+      "id": "4517",
+      "Mobile": "saaaaaa",
+      "Model": "aaaa",
+      "Phone": "9876543245",
       "Issues": "Display ",
-      "Complaint Registered Date And Time": "Date:2024-9-3, Time: 1:17:21 pm "
+      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 3:45:46 PM "
     }
   ]
 }

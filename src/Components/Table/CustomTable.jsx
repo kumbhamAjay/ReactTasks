@@ -48,7 +48,8 @@ export default function CustomTable({ tableData ,dataToParent}) {
               })}
               <td>
               <MdModeEdit onClick={()=>sendData(eachObj)}/>
-            </td>
+              {/* <button onClick={()=>sendData(eachObj)}>edit</button> */}
+              </td>
             </tr>
           );
         })}

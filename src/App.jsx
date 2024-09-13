@@ -4,6 +4,7 @@
 import { BrowserRouter } from "react-router-dom"
 // import ControlledForm from "./Components/hooks/useRef/controlledForm"
 import StoreNavigate from "./Components/Navigations/StoreNavigate"
+import Crud from "./Components/Todo/Crud"
 
 
 
@@ -18,7 +19,8 @@ function App() {
   
     {/* <ControlledForm/> */}
     <BrowserRouter>
-    <StoreNavigate/>
+    {/* <StoreNavigate/> */}
+    <Crud/>
     </BrowserRouter>
   
     </>

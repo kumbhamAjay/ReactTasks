@@ -21,8 +21,8 @@ const StoreNavigate = () => {
         <button><Link to="/products">All products</Link></button>
         <button><Link to="/products/categories/electronics">electronics </Link></button>
         <button><Link to="/products/categories/jewelery">jewelery </Link></button>
-        <button><Link to="/products/categories/men's clothing">men's clothing </Link></button>
-        <button><Link to="/products/categories/women's clothing">women's clothing </Link></button>
+        <button><Link to="/products/categories/men's clothing">men clothing </Link></button>
+        <button><Link to="/products/categories/women's clothing">women clothing </Link></button>
        
         <Routes>
             <Route index element={<Products/>}/>

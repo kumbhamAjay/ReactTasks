@@ -1,60 +1,12 @@
 {
   "complaints": [
     {
-      "id": "b310",
-      "Mobile": "as",
-      "Model": "kj",
-      "Phone": "9876543",
-      "Issues": "Display ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:10:41 pm "
-    },
-    {
-      "id": "22b7",
-      "Mobile": "A",
-      "Model": "SSSS",
-      "Phone": "123456",
-      "Issues": "Display ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:00:20 PM "
-    },
-    {
-      "id": "ec27",
-      "Mobile": "sssssss",
-      "Model": "sssssss",
-      "Phone": "123456",
-      "Issues": "Functionality Display Battery ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:01:48 PM "
-    },
-    {
-      "id": "9cf8",
-      "Mobile": "asdfghj",
-      "Model": "lkhgf",
-      "Phone": "876",
-      "Issues": "Battery ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:02:45 PM "
-    },
-    {
-      "id": "61e8",
-      "Mobile": "qqqqqqqqqqqqqqqqqqqqqq",
-      "Model": "1111111111111111111111",
-      "Phone": "957346704",
+      "id": "6bcc",
+      "Mobile": "samsung",
+      "Model": "s32",
+      "Phone": "8765432",
       "Issues": "Functionality ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:09:49 pm "
-    },
-    {
-      "id": "80a0",
-      "Mobile": "qqqqqqqqqqqqqqqqqqqqqq",
-      "Model": "1111111111111111111111",
-      "Phone": "9876543",
-      "Issues": "Battery ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:10:20 pm "
-    },
-    {
-      "id": "3224",
-      "Mobile": "qqqqqqqqqqqqqqqqqqqqqq",
-      "Model": "1111111111111111111111",
-      "Phone": "957346704",
-      "Issues": "Display ",
-      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:10:33 pm "
+      "Complaint Registered Date And Time": "Date:2024-9-13, Time: 4:37:08 pm "
     }
   ]
 }
